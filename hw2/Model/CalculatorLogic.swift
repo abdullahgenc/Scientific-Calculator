@@ -9,10 +9,13 @@ import Foundation
 
 struct CalculatorLogic {
     
+    //MARK: - Properties
+    //Variables required for calculation.
     private var firstNumber: Double?
     private var secondNumber: Double?
     private var operand: String?
 
+    //getter and setter functions.
     func getFirstNumber() -> Double? {
         return firstNumber
     }
@@ -33,25 +36,31 @@ struct CalculatorLogic {
         self.operand = operand
     }
     
+    //MARK: - Functions for Calculation
+    //The function that finds the nth root of the input value.
     private func nthRoot(_ value: Double, _ n: Double) -> Double {
         let multipleOf2 = abs(n.truncatingRemainder(dividingBy: 2)) == 1
         return value < 0 && multipleOf2 ? -pow(-value, 1/n) : pow(value, 1/n)
     }
     
+    //The function that finds the factorial of the input value.
     private func factorial(_ N: Double) -> Double {
-        var mult = N
-        var retVal: Double = 1.0
-        while mult > 0.0 {
-            retVal *= mult
-            mult -= 1.0
+        if Int(exactly: N) != nil {
+            var mult = N
+            var retVal: Double = 1.0
+            while mult > 0.0 {
+                retVal *= mult
+                mult -= 1.0
+            }
+            return retVal
+        } else {
+            return .zero
         }
-        return retVal
     }
     
+    //Functions for operations that require a single number and a single operand.
     func operandCalculate(symbol: String) -> Double? {
-        
         if let num1 = firstNumber {
-            
             switch symbol {
             case "+/-":
                 return num1 * -1
@@ -80,8 +89,8 @@ struct CalculatorLogic {
         return nil
     }
     
+    //Functions for operations that require two numbers and a single operand.
     func arithmeticCalculate() -> Double? {
-
         switch operand {
         case "+":
             return firstNumber! + secondNumber!
