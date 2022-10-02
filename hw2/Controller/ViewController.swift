@@ -39,6 +39,11 @@ class ViewController: UIViewController {
         if let calcMethod = sender.currentTitle {
             
             if let result = calculator.operandCalculate(symbol: calcMethod) {
+                if calcMethod == "AC" {
+                    historyDisplayLabel.text = ""
+                } else {
+                    historyDisplayLabel.text = "\(calcMethod) calculation for \(displayValue) = \(result)"
+                }
                 displayValue = result
             }
         }
