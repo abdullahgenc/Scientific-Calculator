@@ -34,6 +34,20 @@ struct CalculatorLogic {
         self.operand = operand
     }
     
+    private func nthRoot(_ value: Double, _ n: Double) -> Double {
+        let multipleOf2 = abs(n.truncatingRemainder(dividingBy: 2)) == 1
+        return value < 0 && multipleOf2 ? -pow(-value, 1/n) : pow(value, 1/n)
+    }
+    
+    private func factorial(_ N: Double) -> Double {
+        var mult = N
+        var retVal: Double = 1.0
+        while mult > 0.0 {
+            retVal *= mult
+            mult -= 1.0
+        }
+        return retVal
+    }
      
     func operandCalculate(symbol: String) -> Double? {
         
@@ -46,15 +60,29 @@ struct CalculatorLogic {
                 return .zero
             case "%" :
                 return num1 * 0.01
+            case "x²" :
+                return pow(num1, 2)
+            case "x³" :
+                return pow(num1, 3)
+            case "√x" :
+                return sqrt(num1)
+            case "∛x" :
+                return nthRoot(num1, 3)
+            case "1/x" :
+                return 1 / num1
+            case "x!" :
+                return factorial(num1)
+            case "log₂" :
+                return log2(num1)
             default:
-                print(".")
+                print("passed operand error")
             }
         }
         return nil
     }
     
     func arithmeticCalculate() -> Double? {
-            
+
         switch operand {
         case "+":
             return firstNumber! + secondNumber!
@@ -62,10 +90,14 @@ struct CalculatorLogic {
             return firstNumber! - secondNumber!
         case "x":
             return firstNumber! * secondNumber!
-        case "/":
+        case "÷":
             return firstNumber! / secondNumber!
+        case "xʸ":
+            return pow(firstNumber!, secondNumber!)
+        case "ʸ√x":
+            return nthRoot(secondNumber!, firstNumber!)
         default:
-            fatalError("passed operation error")
+            fatalError("passed arithmetic operand error")
         }
         
     }
