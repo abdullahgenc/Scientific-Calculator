@@ -7,6 +7,17 @@
 
 import UIKit
 
+extension Double {
+    
+    func removeZerosFromEnd() -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: self)
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 6 //maximum digits in Double after dot (maximum precision)
+        return String(formatter.string(from: number) ?? "")
+    }
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var historyDisplayLabel: UILabel!
@@ -23,7 +34,7 @@ class ViewController: UIViewController {
             return number
         }
         set {
-            displayLabel.text = String(newValue)
+            displayLabel.text = String(newValue.removeZerosFromEnd())
         }
     }
     
@@ -37,12 +48,11 @@ class ViewController: UIViewController {
         calculator.setSecondNumber(nil)
         
         if let calcMethod = sender.currentTitle {
-            
             if let result = calculator.operandCalculate(symbol: calcMethod) {
                 if calcMethod == "AC" {
                     historyDisplayLabel.text = ""
                 } else {
-                    historyDisplayLabel.text = "\(calcMethod) calculation for \(displayValue) = \(result)"
+                    historyDisplayLabel.text = "\(calcMethod) for \(displayValue) = \(result.removeZerosFromEnd())"
                 }
                 displayValue = result
             }
@@ -55,30 +65,25 @@ class ViewController: UIViewController {
         isFinishedTypingNumber = true
         
         if !isTappedArithmeticButton {
-            
             if let calcMethod = sender.currentTitle {
-                
                 if calculator.getFirstNumber() == nil {
                     calculator.setFirstNumber(displayValue)
                     if calcMethod != "=" {
                         calculator.setOperand(calcMethod)
                         isTappedArithmeticButton = true
                     }
-                    
                 } else if calculator.getOperand() == nil {
                     if calcMethod != "=" {
                         calculator.setOperand(calcMethod)
                         isTappedArithmeticButton = true
                     }
-                    
                 } else if calculator.getSecondNumber() == nil {
                     calculator.setSecondNumber(displayValue)
-                    
                     if let result = calculator.arithmeticCalculate() {
                         let firstNum = calculator.getFirstNumber()!
                         let secondNum = displayValue
                         let operand = calculator.getOperand()!
-                        historyDisplayLabel.text = "\(firstNum) \(operand) \(secondNum) = \(result)"
+                        historyDisplayLabel.text = "\(firstNum.removeZerosFromEnd()) \(operand) \(secondNum.removeZerosFromEnd()) = \(result.removeZerosFromEnd())"
                         
                         displayValue = result
                         calculator.setFirstNumber(result)
@@ -93,9 +98,7 @@ class ViewController: UIViewController {
                     }
                 }
             }
-                        
         }
-        
     }
     
     @IBAction func didTapDigitButton(_ sender: UIButton) {
@@ -111,12 +114,7 @@ class ViewController: UIViewController {
                 }
                 displayLabel.text! += numValue
             }
-
         }
-
     }
-    
-    
-    
 }
 

@@ -13,7 +13,6 @@ struct CalculatorLogic {
     private var secondNumber: Double?
     private var operand: String?
 
-    
     func getFirstNumber() -> Double? {
         return firstNumber
     }
@@ -48,7 +47,7 @@ struct CalculatorLogic {
         }
         return retVal
     }
-     
+    
     func operandCalculate(symbol: String) -> Double? {
         
         if let num1 = firstNumber {
@@ -99,7 +98,5 @@ struct CalculatorLogic {
         default:
             fatalError("passed arithmetic operand error")
         }
-        
     }
-    
 }
