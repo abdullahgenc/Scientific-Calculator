@@ -1,21 +1,18 @@
 
-# Pazarama iOS Bootcamp - Hafta 2 - Ödev  
+# Scientific Calculator - Pazarama iOS Bootcamp 
  
-Bilimsel Hesap Makinesi  
-Eğitimlerde üstünde çalıştığımız hesap makinesinin geliştirmesinin tamamlanması ve basit
-hesap makinesinin, çeşitli fonksiyonlar eklenerek(karekök, üs alma vb.) bilimsel hesap
-makinesine çevrilmesidir. Yapılan bir önceki matematiksel işlem hafızada tutulmalı ve
-hesaplamaları yaptığımız label’in bir üstüne daha küçük bir label ekleyerek orada
-gösterebiliriz. iPhone’da yer alan hesap makinesini dikkate alabilirsiniz. Tam bir bilimsel
-hesap makinesi istemiyoruz. Kendi seçtiğiniz üç farklı özellik eklemeniz yeterli. Tabi bütün
-özellikleri tanımlayabiliyorsanız deneyim açısından çok daha iyi olacaktır.  
-Değerlendirme Kriterleri  
-- Hesap makinesi uygulamasının sorunsuz çalışması.(Dört işlemi yapması ve iOS’da yer
-alan hesap makinesine yakın bir deneyim sunması.)  
-- En az üç adet bilimsel hesap makinesi özelliğinin eklenmesi.  
-- Bir önceki işlemin displayLabel üstüne eklenecek daha küçük fontlu bir label ile
-kullanıcıya gösterilmesi.  
-iOS hesap makinesi. Solda dik(Portrait), sağda yatay(Landscape) görünüm.  
-  
-  
-  PDF dosyasında görseller mevcuttur.
+## App Overview Videos
+
+<details>
+  <summary>Portrait</summary>
+
+https://user-images.githubusercontent.com/47529941/197423467-379eb543-f76e-4483-bf86-59809f210b1f.mp4
+
+</details>
+
+<details>
+  <summary>Landscape</summary>
+
+https://user-images.githubusercontent.com/47529941/197423473-30a6d73c-1c1c-4a6f-b55f-25efa77492d5.mp4
+
+</details>
